@@ -46,7 +46,6 @@ const GraphContent = forwardRef(({ nodesEdges, theme }, ref) => {
       }
 
       try {
-       
         graphEl.querySelectorAll("path.react-flow__edge-path").forEach((path) => {
           path.setAttribute("stroke", "#000");
           path.setAttribute("stroke-width", "1.5");
@@ -54,13 +53,12 @@ const GraphContent = forwardRef(({ nodesEdges, theme }, ref) => {
 
         const dataUrl = await toPng(graphEl, {
           cacheBust: true,
-          backgroundColor: "#ffffff", 
+          backgroundColor: "#ffffff",
           style: {
             backgroundColor: "#ffffff",
             color: "#000000",
           },
           filter: (node) => {
-           
             if (node.classList?.contains("react-flow__controls")) return false;
             return true;
           },
@@ -121,18 +119,15 @@ const GraphContent = forwardRef(({ nodesEdges, theme }, ref) => {
     }
   }, [nodes, edges, fitView]);
 
-
   const handleNodeClick = (_, node) => {
     navigator.clipboard.writeText(node.id);
-   
     const toast = document.createElement("div");
     toast.innerText = "Address copied!";
     toast.style.position = "fixed";
     toast.style.bottom = "20px";
     toast.style.left = "50%";
     toast.style.transform = "translateX(-50%)";
-    toast.style.background =
-      theme === "dark" ? "#facc15" : "#333";
+    toast.style.background = theme === "dark" ? "#facc15" : "#333";
     toast.style.color = theme === "dark" ? "#000" : "#fff";
     toast.style.padding = "8px 16px";
     toast.style.borderRadius = "8px";
@@ -145,15 +140,29 @@ const GraphContent = forwardRef(({ nodesEdges, theme }, ref) => {
 
   return (
     <div
-      className={`relative w-full md:w-2/3 h-full ${
-        theme === "dark" ? "bg-gray-900" : "bg-gray-50"
+      className={`relative w-full md:w-2/3 h-[70vh] md:h-full flex flex-col
+        border-l-2 overflow-hidden ${
+        theme === "dark"
+          ? "bg-gray-900 border-gray-700"
+          : "bg-gray-50 border-gray-300"
       }`}
     >
-      <ReactFlow nodes={nodes} edges={edges} onNodeClick={handleNodeClick}>
-        <Controls showInteractive={false} />
-      </ReactFlow>
+      <div className="flex-1 w-full h-full min-h-[300px] overflow-auto">
+        <ReactFlow
+          nodes={nodes}
+          edges={edges}
+          onNodeClick={handleNodeClick}
+          fitView
+          className="react-flow-responsive"
+        >
+          <Controls showInteractive={false} />
+        </ReactFlow>
+      </div>
 
-      <div className="absolute top-2 right-2 flex flex-col gap-2 z-10">
+      {/* Responsive zoom buttons */}
+      <div
+        className="absolute top-2 right-2 flex flex-col sm:flex-row gap-2 z-10"
+      >
         {["+", "−", "Fit"].map((label, i) => (
           <button
             key={i}
@@ -164,7 +173,7 @@ const GraphContent = forwardRef(({ nodesEdges, theme }, ref) => {
                 ? zoomOut
                 : () => fitView()
             }
-            className={`px-2 py-1 rounded text-sm font-medium transition-all border
+            className={`px-3 py-1 rounded text-sm font-medium transition-all border
               ${
                 theme === "dark"
                   ? "bg-gray-700 text-gray-100 border-transparent hover:border-yellow-500 hover:text-yellow-400 hover:bg-gray-800"
