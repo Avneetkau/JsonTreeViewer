@@ -10,16 +10,16 @@ The goal of this project is to create a web-based tool that helps users **visual
 It enables users to input or paste any JSON, validate it, and visualize it as connected nodes with color-coded types.
 
 ---
- # 1️⃣ Clone the repository
+ ## 1️⃣ Clone the repository
 git clone https://github.com/your-username/JSONTreeViewer.git
 
-# 2️⃣ Navigate into the folder
+## 2️⃣ Navigate into the folder
 cd JSONTreeViewer
 
-# 3️⃣ Install dependencies
+# #3️⃣ Install dependencies
 npm install
 
-# 4️⃣ Run the development server
+# #4️⃣ Run the development server
 npm run dev
 
 # 5️⃣ Open in your browser
@@ -27,7 +27,7 @@ http://localhost:5173/
 
 ## 🚀 Live Demo
 
-🔗 **[View Demo](https://your-deployed-link.vercel.app/)**  
+🔗 **[View Demo](https://json-tree-viewer-fipg.vercel.app/)**  
 *(Replace with your actual deployed link from GitHub Pages / Netlify / Vercel)*
 
 ---
@@ -44,14 +44,8 @@ http://localhost:5173/
 - **Tree Visualization (React Flow)**
   - Visualizes JSON as a hierarchical **node tree**.
   - Uses **React Flow** to render connected nodes.
-  - Supports:
-    - **Object nodes** – show object keys.
-    - **Array nodes** – show array indices.
-    - **Primitive nodes** – show key-value pairs (string, number, boolean, null).
-  - **Color-coded nodes**:
-    - Objects → 🟦 Blue / Purple
-    - Arrays → 🟩 Green
-    - Primitives → 🟧 Orange / Yellow
+ 
+ 
 
 - **Search Functionality**
   - Search JSON nodes by **JSON path** (e.g. `$.user.address.city` or `items[0].name`).
