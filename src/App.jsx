@@ -28,14 +28,14 @@ export default function App() {
     }
   };
 
-  // ✅ Updated: Clear JSON and the graph as well
+
   const handleClear = () => {
     setJsonText("");
     setNodesEdges({ nodes: [], edges: [] }); // clears the tree visualization
   };
 
   const handleSample = () => {
-    fetch("/src/assets/sample.json")
+    fetch("/sample.json")
       .then((r) => r.json())
       .then((j) => setJsonText(JSON.stringify(j, null, 2)))
       .catch(() => alert("Sample file not found."));
