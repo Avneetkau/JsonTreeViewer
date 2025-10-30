@@ -11,18 +11,18 @@ It enables users to input or paste any JSON, validate it, and visualize it as co
 
 ---
  ## 1️⃣ Clone the repository
-git clone https://github.com/your-username/JSONTreeViewer.git
+git clone https://github.com/Avneetkau/JsonTreeViewer
 
 ## 2️⃣ Navigate into the folder
 cd JSONTreeViewer
 
-# #3️⃣ Install dependencies
+## 3️⃣ Install dependencies
 npm install
 
-# #4️⃣ Run the development server
+## 4️⃣ Run the development server
 npm run dev
 
-# 5️⃣ Open in your browser
+## 5️⃣ Open in your browser
 http://localhost:5173/
 
 ## 🚀 Live Demo
