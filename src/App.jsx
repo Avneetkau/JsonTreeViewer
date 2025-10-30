@@ -3,7 +3,7 @@ import Navbar from "./components/Navbar";
 import Toolbar from "./components/Toolbar";
 import Editor from "./components/Editor";
 import Graph from "./components/Graph/Graph";
-import { parsePath } from "./components/utils/pathParser";
+import { parsePath } from "./components/utils/PathParser";
 import { buildGraphFromJson } from "./components/utils/buildGraphFromJson";
 
 export default function App() {
