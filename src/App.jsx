@@ -28,7 +28,11 @@ export default function App() {
     }
   };
 
-  const handleClear = () => setJsonText("");
+  // ✅ Updated: Clear JSON and the graph as well
+  const handleClear = () => {
+    setJsonText("");
+    setNodesEdges({ nodes: [], edges: [] }); // clears the tree visualization
+  };
 
   const handleSample = () => {
     fetch("/src/assets/sample.json")
@@ -60,7 +64,7 @@ export default function App() {
 
       <Toolbar
         onVisualize={handleVisualize}
-        onClear={handleClear}
+        onClear={handleClear} 
         onSample={handleSample}
         onDownload={handleDownload}
         theme={theme}

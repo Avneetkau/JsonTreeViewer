@@ -36,7 +36,6 @@ const GraphContent = forwardRef(({ nodesEdges, theme }, ref) => {
       }
     },
 
-    // ✅ Updated Download to PNG (white background + visible edges)
     exportPNG: async () => {
       const { toPng } = await import("html-to-image");
       const graphEl = document.querySelector(".react-flow");
@@ -47,7 +46,7 @@ const GraphContent = forwardRef(({ nodesEdges, theme }, ref) => {
       }
 
       try {
-        // ✅ Ensure edges are visible before exporting
+       
         graphEl.querySelectorAll("path.react-flow__edge-path").forEach((path) => {
           path.setAttribute("stroke", "#000");
           path.setAttribute("stroke-width", "1.5");
@@ -55,13 +54,13 @@ const GraphContent = forwardRef(({ nodesEdges, theme }, ref) => {
 
         const dataUrl = await toPng(graphEl, {
           cacheBust: true,
-          backgroundColor: "#ffffff", // ✅ Always export with white background
+          backgroundColor: "#ffffff", 
           style: {
             backgroundColor: "#ffffff",
             color: "#000000",
           },
           filter: (node) => {
-            // ✅ Hide zoom controls from image
+           
             if (node.classList?.contains("react-flow__controls")) return false;
             return true;
           },
@@ -122,13 +121,35 @@ const GraphContent = forwardRef(({ nodesEdges, theme }, ref) => {
     }
   }, [nodes, edges, fitView]);
 
+
+  const handleNodeClick = (_, node) => {
+    navigator.clipboard.writeText(node.id);
+   
+    const toast = document.createElement("div");
+    toast.innerText = "Address copied!";
+    toast.style.position = "fixed";
+    toast.style.bottom = "20px";
+    toast.style.left = "50%";
+    toast.style.transform = "translateX(-50%)";
+    toast.style.background =
+      theme === "dark" ? "#facc15" : "#333";
+    toast.style.color = theme === "dark" ? "#000" : "#fff";
+    toast.style.padding = "8px 16px";
+    toast.style.borderRadius = "8px";
+    toast.style.fontSize = "14px";
+    toast.style.zIndex = "9999";
+    toast.style.boxShadow = "0 2px 6px rgba(0,0,0,0.2)";
+    document.body.appendChild(toast);
+    setTimeout(() => toast.remove(), 1500);
+  };
+
   return (
     <div
       className={`relative w-full md:w-2/3 h-full ${
         theme === "dark" ? "bg-gray-900" : "bg-gray-50"
       }`}
     >
-      <ReactFlow nodes={nodes} edges={edges}>
+      <ReactFlow nodes={nodes} edges={edges} onNodeClick={handleNodeClick}>
         <Controls showInteractive={false} />
       </ReactFlow>
 

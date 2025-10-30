@@ -3,7 +3,7 @@ import React from "react";
 export default function Navbar({ theme, setTheme }) {
   return (
     <nav
-      className={`flex items-center justify-between px-6 py-3 border-b transition-colors duration-300 ${
+      className={`flex items-center justify-between px-6 py-3 border-b-2 transition-colors duration-300 ${
         theme === "dark"
           ? "bg-gray-900 border-gray-700 text-gray-100"
           : "bg-gray-50 border-gray-300 text-gray-900"

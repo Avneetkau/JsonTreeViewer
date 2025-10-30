@@ -1,6 +1,6 @@
 import dagre from "dagre";
 
-// Helper to build the graph data with readable path-based node IDs
+
 export const buildGraphFromJson = (data) => {
   const nodes = [];
   const edges = [];
@@ -14,7 +14,7 @@ export const buildGraphFromJson = (data) => {
     nodes.push({
       id,
       data: { label: key },
-      position: { x: 0, y: 0 }, // Dagre will update later
+      position: { x: 0, y: 0 }, 
     });
 
     // Link to parent
@@ -44,14 +44,14 @@ export const buildGraphFromJson = (data) => {
   // Start traversal
   traverse(data);
 
-  // === DAGRE Layout ===
+
   const dagreGraph = new dagre.graphlib.Graph();
   dagreGraph.setDefaultEdgeLabel(() => ({}));
 
   const nodeWidth = 160;
   const nodeHeight = 50;
 
-  dagreGraph.setGraph({ rankdir: "TB" }); // top-to-bottom layout
+  dagreGraph.setGraph({ rankdir: "TB" }); 
 
   nodes.forEach((node) => {
     dagreGraph.setNode(node.id, { width: nodeWidth, height: nodeHeight });
@@ -63,7 +63,7 @@ export const buildGraphFromJson = (data) => {
 
   dagre.layout(dagreGraph);
 
-  // Update node positions from Dagre output
+
   nodes.forEach((node) => {
     const pos = dagreGraph.node(node.id);
     node.position = {
