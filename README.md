@@ -10,6 +10,20 @@ The goal of this project is to create a web-based tool that helps users **visual
 It enables users to input or paste any JSON, validate it, and visualize it as connected nodes with color-coded types.
 
 ---
+ # 1️⃣ Clone the repository
+git clone https://github.com/your-username/JSONTreeViewer.git
+
+# 2️⃣ Navigate into the folder
+cd JSONTreeViewer
+
+# 3️⃣ Install dependencies
+npm install
+
+# 4️⃣ Run the development server
+npm run dev
+
+# 5️⃣ Open in your browser
+http://localhost:5173/
 
 ## 🚀 Live Demo
 
