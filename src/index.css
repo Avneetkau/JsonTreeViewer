@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+/* =============================
+   Root (Light Mode)
+============================= */
+:root {
+  --bg: #ffffff;
+  --text: #000000;
+
+  /* Button colors */
+  --btn-bg: #ffffff;
+  --btn-bg-hover: #e5e5e5;
+  --btn-text: #000000;
+  --btn-border: #000000;
+}
+
+/* =============================
+   Dark Mode
+============================= */
+[data-theme="dark"] {
+  --bg: #0f172a;
+  --text: #f8fafc;
+  --btn-bg: #1e293b;
+  --btn-bg-hover: #334155;
+  --btn-text: #f8fafc;
+  --btn-border: #94a3b8;
+}
+
+/* Apply colors */
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  transition: background-color 0.3s, color 0.3s;
+}
+

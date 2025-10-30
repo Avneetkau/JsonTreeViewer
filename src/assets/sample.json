@@ -1,0 +1,9 @@
+{
+  "name": "John",
+  "age": 30,
+  "skills": ["React", "Node.js", "MongoDB"],
+  "address": {
+    "city": "Bangalore",
+    "zip": 560001
+  }
+}
